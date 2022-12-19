@@ -1,12 +1,13 @@
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { resolve } = require("node:path");
+import "webpack-dev-server";
+import { resolve } from "node:path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 const mode = process.env.NODE_ENV;
 
 module.exports = {
-  entry: { main: "./src/index.ts" },
+  entry: { main: "./src/index.tsx" },
   output: {
     path: resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -18,12 +19,12 @@ module.exports = {
   },
   devtool: mode === "development" ? "eval-source-map" : "source-map",
   resolve: {
-    extensions: [".js", ".ts"],
+    extensions: [".js", ".ts", ".tsx"],
   },
   module: {
     rules: [
       {
-        test: /\.(ts|js)$/,
+        test: /\.(ts|js|tsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
