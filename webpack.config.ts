@@ -1,12 +1,16 @@
 import "webpack-dev-server";
 import { resolve } from "node:path";
+import * as webpack from 'webpack';
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
-const mode = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV as
+| 'development'
+| 'production'
+| undefined;
 
-module.exports = {
+const config: webpack.Configuration = {
   entry: { main: "./src/index.tsx" },
   output: {
     path: resolve(__dirname, "dist"),
@@ -17,7 +21,7 @@ module.exports = {
     },
     // assetModuleFilename: 'images/[name][ext]'
   },
-  devtool: mode === "development" ? "eval-source-map" : "source-map",
+  devtool: NODE_ENV === "development" ? "eval-source-map" : "source-map",
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
   },
@@ -49,7 +53,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "public/index.html",
     }),
     new MiniCssExtractPlugin(),
   ],
@@ -65,3 +69,5 @@ module.exports = {
     topLevelAwait: true,
   },
 };
+
+export default config;
