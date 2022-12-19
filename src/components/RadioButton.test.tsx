@@ -11,7 +11,6 @@ describe("testing RadioButton component", () => {
 
         screen.debug();
 
-        expect(screen.getByLabelText("React")).toBeInTheDocument;
+        expect(screen.getByLabelText("React")).toBeChecked();
     })
-
 })
