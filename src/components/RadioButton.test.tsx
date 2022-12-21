@@ -19,7 +19,7 @@ describe("testing RadioButton component", () => {
 
         const button = screen.getByLabelText("Angular");
 
-        userEvent.click(button);
+        await userEvent.click(button);
 
         screen.debug();
 
