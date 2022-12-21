@@ -13,4 +13,16 @@ describe("testing RadioButton component", () => {
 
         expect(screen.getByLabelText("React")).toBeChecked();
     })
+
+    test("Button click", async () => {
+        render(<RadioButton />);
+
+        const button = screen.getByLabelText("Angular");
+
+        userEvent.click(button);
+
+        screen.debug();
+
+        expect(screen.getByLabelText("Angular")).toBeChecked();
+    })
 })
