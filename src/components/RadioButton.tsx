@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
-function RadioButton() {
+export const RadioButton: FC = () => {
     const [value, setValue] = useState('1');
 
     function changeValue(event : React.ChangeEvent<HTMLInputElement>) {
@@ -30,5 +30,3 @@ function RadioButton() {
         </label>
     </>;
 }
-
-export default RadioButton;

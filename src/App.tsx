@@ -1,10 +1,9 @@
 import React from 'react';
-import RadioButton from "./components/RadioButton";
+import {DisplayPage} from "./components/DisplayPage";
 
 const App= () => {
     return <>
-        <h1>Вакансии для начинающих разработчиков</h1>
-        <RadioButton></RadioButton>
+        <DisplayPage></DisplayPage>
     </>;
 }
 
