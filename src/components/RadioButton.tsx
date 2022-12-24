@@ -1,10 +1,15 @@
 import React, { FC, useState } from 'react';
+import { useDispatch } from "react-redux";
+import { changeName } from "../store/profile/actions";
 
 export const RadioButton: FC = () => {
     const [value, setValue] = useState('1');
 
+    const dispatch = useDispatch();
+
     function changeValue(event : React.ChangeEvent<HTMLInputElement>) {
         setValue(event.target.value);
+        dispatch(changeName(value));
     }
 
     return <>
