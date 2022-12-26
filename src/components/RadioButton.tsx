@@ -9,7 +9,7 @@ export const RadioButton: FC = () => {
 
     function changeValue(event : React.ChangeEvent<HTMLInputElement>) {
         setValue(event.target.value);
-        dispatch(changeName(value));
+        dispatch(changeName(event.target.value));
     }
 
     return <>
