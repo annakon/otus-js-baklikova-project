@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { changeName } from "../store/profile/actions";
 
 export const RadioButton: FC = () => {
-    const [value, setValue] = useState('1');
+    const [value, setValue] = useState('React');
 
     const dispatch = useDispatch();
 
@@ -14,22 +14,22 @@ export const RadioButton: FC = () => {
 
     return <>
         <label>
-        <input type="radio" name="radio" value="1"
-               checked={value === '1'}
+        <input type="radio" name="radio" value="React"
+               checked={value === 'React'}
                onChange={changeValue} />
             React
         </label>
 
         <label>
-        <input type="radio" name="radio" value="2"
-               checked={value === '2'}
+        <input type="radio" name="radio" value="Angular"
+               checked={value === 'Angular'}
                onChange={changeValue} />
             Angular
         </label>
 
         <label>
-        <input type="radio" name="radio" value="3"
-               checked={value === '3'}
+        <input type="radio" name="radio" value="Vue"
+               checked={value === 'Vue'}
                onChange={changeValue} />
             Vue
         </label>
