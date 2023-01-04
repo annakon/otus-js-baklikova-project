@@ -1,19 +1,19 @@
 import React, { FC, useState } from 'react';
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { changeName, loading, success, error } from "../store/profile/actions";
 import {store} from "../store/store";
 
 export const RadioButton: FC = () => {
     const [value, setValue] = useState('React');
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
      function loadData() {
         // put your code here
         return async (dispatch: typeof  store.dispatch, getstate: typeof store.getState)=>
         {
             dispatch(loading());
-            fetch(`https://api.hh.ru/areas/countries`)
+            fetch(`https://api.hh.ru/vacancies?text="${getstate().name}"`)
                 .then((response) => response.json())
                 .then((data: any) => dispatch(success(data)))
                 .catch((err: Error) => dispatch(error(err)));
@@ -21,9 +21,9 @@ export const RadioButton: FC = () => {
     }
     function changeValue(event : React.ChangeEvent<HTMLInputElement>) {
         setValue(event.target.value);
-        store.dispatch(changeName(event.target.value));
+        dispatch(changeName(event.target.value));
 
-        store.dispatch(loadData() as never);
+        dispatch(loadData() as never);
     }
 
     return <>
