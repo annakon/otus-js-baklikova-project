@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import { changeName, loading, success, error } from "../store/profile/actions";
 import {store} from "../store/store";
 
@@ -13,7 +13,7 @@ export const RadioButton: FC = () => {
         return async (dispatch: typeof  store.dispatch, getstate: typeof store.getState)=>
         {
             dispatch(loading());
-            fetch(`https://api.hh.ru/vacancies?text="${getstate().name}"`)
+            fetch(`https://api.hh.ru/vacancies?text="${getstate().name}"&area=1`)
                 .then((response) => response.json())
                 .then((data: any) => dispatch(success(data)))
                 .catch((err: Error) => dispatch(error(err)));
