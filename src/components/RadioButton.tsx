@@ -6,22 +6,24 @@ import {store} from "../store/store";
 export const RadioButton: FC = () => {
     const [value, setValue] = useState('React');
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    async function loadData() {
+     function loadData() {
         // put your code here
-        return (dispatch: typeof  store.dispatch, getstate: typeof store.getState)=>
+        return async (dispatch: typeof  store.dispatch, getstate: typeof store.getState)=>
         {
             dispatch(loading());
             fetch(`https://api.hh.ru/areas/countries`)
+                .then((response) => response.json())
                 .then((data: any) => dispatch(success(data)))
                 .catch((err: Error) => dispatch(error(err)));
         }
     }
     function changeValue(event : React.ChangeEvent<HTMLInputElement>) {
         setValue(event.target.value);
-        dispatch(changeName(event.target.value));
-        loadData();
+        store.dispatch(changeName(event.target.value));
+
+        store.dispatch(loadData() as never);
     }
 
     return <>
