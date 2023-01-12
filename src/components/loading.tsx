@@ -22,8 +22,8 @@ export const Loading: FC = () => {
                     <div className="cardBody">
                         <h5 className="card-title"><a className="card-link" href={item.alternate_url}>{item.name}</a></h5>
                       <h6 className="card-subtitle mb-2 text-muted">{item.employer.name}</h6>
-                      <p className="card-text">{item.snippet.requirement.replace(/<\/?[^>]+(>|$)/g, "")}</p>
-                      <p className="card-text">{item.snippet.responsibility.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+                      <p className="card-text">{item.snippet.requirement?.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+                      <p className="card-text">{item.snippet.responsibility?.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                       </div>
                     </div>
                 )}
