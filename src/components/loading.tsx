@@ -15,21 +15,19 @@ export const Loading: FC = () => {
     }
     if (isdata) {
         const items = isdata['items'];
-        let text="";
-        //debugger
-        if(items) {
-            for (let i = 0; i < items.length; i++) {
-                text = text + items[i].name;
-            }
-        }
-       // return <pre>{text}</pre>
-        //return <pre>{JSON.stringify(isdata, null, 2)}</pre>;
+
         if(items) {
             return <div>
-                {items.map((item: any) => <p key={item.id}>{item.name}</p>)}
+                {items.map((item: any) => <div key={item.id}>
+                    <p><a href={item.alternate_url}>{item.name}</a></p>
+                    <p>{item.employer.name}</p>
+                    <p>{item.snippet.requirement}</p>
+                    <p>{item.snippet.responsibility}</p>
+                    </div>
+                )}
             </div>
+           // return <pre>{JSON.stringify(isdata, null, 2)}</pre>;
         }
-        return <></>
     }
     return <></>
 }
