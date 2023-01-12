@@ -22,8 +22,14 @@ export const Loading: FC = () => {
                 text = text + items[i].name;
             }
         }
-        return <pre>{text}</pre>
+       // return <pre>{text}</pre>
         //return <pre>{JSON.stringify(isdata, null, 2)}</pre>;
+        if(items) {
+            return <div>
+                {items.map((item: any) => <p key={item.id}>{item.name}</p>)}
+            </div>
+        }
+        return <></>
     }
     return <></>
 }
