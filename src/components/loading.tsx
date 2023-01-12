@@ -18,11 +18,13 @@ export const Loading: FC = () => {
 
         if(items) {
             return <div>
-                {items.map((item: any) => <div key={item.id}>
-                    <p><a href={item.alternate_url}>{item.name}</a></p>
-                    <p>{item.employer.name}</p>
-                    <p>{item.snippet.requirement}</p>
-                    <p>{item.snippet.responsibility}</p>
+                {items.map((item: any) => <div className="card" key={item.id}>
+                    <div className="cardBody">
+                        <h5 className="card-title"><a className="card-link" href={item.alternate_url}>{item.name}</a></h5>
+                      <h6 className="card-subtitle mb-2 text-muted">{item.employer.name}</h6>
+                      <p className="card-text">{item.snippet.requirement}</p>
+                      <p className="card-text">{item.snippet.responsibility}</p>
+                      </div>
                     </div>
                 )}
             </div>
