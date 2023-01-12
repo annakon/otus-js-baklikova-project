@@ -8,7 +8,7 @@ export const Loading: FC = () => {
     const isdata = useSelector(getData);
 
     if (Loading) {
-        return <>Loading....</>;
+        return <p>Loading....</p>;
     }
     if (iserror) {
         return <h1>{iserror.message}</h1>;

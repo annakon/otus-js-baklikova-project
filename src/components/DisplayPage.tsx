@@ -6,12 +6,11 @@ import {Loading} from "./loading";
 
 export const DisplayPage: FC = () => {
 
-    const name = useSelector(selectName);
+    //const name = useSelector(selectName);
 
     return <>
         <h1>Вакансии для начинающих разработчиков</h1>
         <RadioButton></RadioButton>
-        <p>{name}</p>
         <Loading></Loading>
     </>
 }
