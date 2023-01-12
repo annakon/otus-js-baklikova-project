@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {useDispatch} from "react-redux";
 import { changeName, loading, success, error } from "../store/profile/actions";
 import {store} from "../store/store";
@@ -19,6 +19,10 @@ export const RadioButton: FC = () => {
                 .catch((err: Error) => dispatch(error(err)));
         }
     }
+
+    useEffect(() => {
+        dispatch(loadData() as never);
+    }, []);
     function changeValue(event : React.ChangeEvent<HTMLInputElement>) {
         setValue(event.target.value);
         dispatch(changeName(event.target.value));

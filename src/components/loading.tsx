@@ -14,7 +14,16 @@ export const Loading: FC = () => {
         return <h1>{iserror.message}</h1>;
     }
     if (isdata) {
-        return <pre>{JSON.stringify(isdata, null, 2)}</pre>;
+        const items = isdata['items'];
+        let text="";
+        //debugger
+        if(items) {
+            for (let i = 0; i < items.length; i++) {
+                text = text + items[i].name;
+            }
+        }
+        return <pre>{text}</pre>
+        //return <pre>{JSON.stringify(isdata, null, 2)}</pre>;
     }
     return <></>
 }
