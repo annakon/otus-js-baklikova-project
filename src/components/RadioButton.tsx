@@ -13,7 +13,7 @@ export const RadioButton: FC = () => {
         return async (dispatch: typeof  store.dispatch, getstate: typeof store.getState)=>
         {
             dispatch(loading());
-            fetch(`https://api.hh.ru/vacancies?text="${getstate().name}"&area=1`)
+            fetch(`https://api.hh.ru/vacancies?text="${getstate().name} AND junior"&area=1`)
                 .then((response) => response.json())
                 .then((data: any) => dispatch(success(data)))
                 .catch((err: Error) => dispatch(error(err)));
