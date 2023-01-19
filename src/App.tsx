@@ -9,7 +9,7 @@ const App= () => {
     return <Provider store={store}>
             <Routes>
                <Route path="/" element={<DisplayPage/>}/>
-                <Route path= "/vacancy/:id" element={<VacancyInfo/>}/>
+                <Route path= "/vacancies/:id" element={<VacancyInfo/>}/>
             </Routes>
     </Provider>;
 }
