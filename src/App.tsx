@@ -1,11 +1,16 @@
 import React from 'react';
 import {DisplayPage} from "./components/DisplayPage";
+import {VacancyInfo} from "./components/VacancyInfo";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import {Route,Routes} from "react-router-dom";
 
 const App= () => {
     return <Provider store={store}>
-        <DisplayPage></DisplayPage>
+            <Routes>
+               <Route path="/" element={<DisplayPage/>}/>
+                <Route path= "/vacancy/:id" element={<VacancyInfo/>}/>
+            </Routes>
     </Provider>;
 }
 

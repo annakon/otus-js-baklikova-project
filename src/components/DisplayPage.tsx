@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 import {RadioButton} from "./RadioButton";
-import { useSelector} from "react-redux";
-import { selectName } from "../store/profile/selectors";
 import {Loading} from "./loading";
 
 export const DisplayPage: FC = () => {
