@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import {isLoading, getError, getData} from "../store/profile/selectors";
 import { useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 export const Loading: FC = () => {
 
     const Loading = useSelector(isLoading);
@@ -20,7 +21,7 @@ export const Loading: FC = () => {
             return <div>
                 {items.map((item: any) => <div className="card" key={item.id}>
                     <div className="cardBody">
-                        <h5 className="card-title"><a className="card-link" href={item.alternate_url}>{item.name}</a></h5>
+                        <h5 className="card-title"><Link className="card-link" to='/vacancy/123'>{item.name}</Link></h5>
                       <h6 className="card-subtitle mb-2 text-muted">{item.employer.name}</h6>
                       <p className="card-text">{item.snippet.requirement?.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                       <p className="card-text">{item.snippet.responsibility?.replace(/<\/?[^>]+(>|$)/g, "")}</p>
