@@ -19,6 +19,7 @@ const config: webpack.Configuration = {
     environment: {
       arrowFunction: false,
     },
+    publicPath: '/',
     // assetModuleFilename: 'images/[name][ext]'
   },
   devtool: NODE_ENV === "development" ? "eval-source-map" : "source-map",
@@ -64,6 +65,7 @@ const config: webpack.Configuration = {
     compress: true,
     port: 9000,
     watchFiles: ["*.html"],
+    historyApiFallback: true,
   },
   experiments: {
     topLevelAwait: true,
