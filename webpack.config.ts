@@ -58,6 +58,10 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+      filename: "404.html"
+    }),
     new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
       PRODUCTION: NODE_ENV=='production',
