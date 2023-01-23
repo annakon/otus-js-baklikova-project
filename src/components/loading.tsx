@@ -16,12 +16,13 @@ export const Loading: FC = () => {
     }
     if (isdata) {
         const items = isdata['items'];
+        const prod_pefix=PRODUCTION?PREFIX:'';
 
         if(items) {
             return <div>
                 {items.map((item: any) => <div className="card" key={item.id}>
                     <div className="cardBody">
-                        <h5 className="card-title"><Link className="card-link" to={`/vacancies/${item.id}`}>{item.name}</Link></h5>
+                        <h5 className="card-title"><Link className="card-link" to={`${prod_pefix}/vacancies/${item.id}`}>{item.name}</Link></h5>
                       <h6 className="card-subtitle mb-2 text-muted">{item.employer.name}</h6>
                       <p className="card-text">{item.snippet.requirement?.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                       <p className="card-text">{item.snippet.responsibility?.replace(/<\/?[^>]+(>|$)/g, "")}</p>
