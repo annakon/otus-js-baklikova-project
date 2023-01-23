@@ -10,6 +10,8 @@ const NODE_ENV = process.env.NODE_ENV as
 | 'production'
 | undefined;
 
+const PREFIX='/otus-js-baklikova-project';
+
 const config: webpack.Configuration = {
   entry: { main: "./src/index.tsx" },
   output: {
@@ -19,7 +21,7 @@ const config: webpack.Configuration = {
     environment: {
       arrowFunction: false,
     },
-    publicPath: '/',
+    publicPath: NODE_ENV=='development'?'/':PREFIX,
     // assetModuleFilename: 'images/[name][ext]'
   },
   devtool: NODE_ENV === "development" ? "eval-source-map" : "source-map",
@@ -57,6 +59,10 @@ const config: webpack.Configuration = {
       template: "public/index.html",
     }),
     new MiniCssExtractPlugin(),
+    new webpack.DefinePlugin({
+      PRODUCTION: NODE_ENV=='production',
+      PREFIX: JSON.stringify(PREFIX)
+    })
   ],
   optimization: {
     minimizer: [`...`, new CssMinimizerPlugin()],
