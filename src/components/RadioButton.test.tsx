@@ -4,10 +4,12 @@ import userEvent from '@testing-library/user-event';
 import {render, screen} from '@testing-library/react';
 
 import {RadioButton} from './RadioButton';
+import {store} from "../store/store";
+import { Provider } from "react-redux";
 
 describe("testing RadioButton component", () => {
     test("should render 3 Button", () => {
-        render(<RadioButton />);
+        render(<Provider store={store}><RadioButton /></Provider>);
 
         screen.debug();
 
@@ -15,7 +17,7 @@ describe("testing RadioButton component", () => {
     })
 
     test("Button click", async () => {
-        render(<RadioButton />);
+        render(<Provider store={store}><RadioButton /></Provider>);
 
         const button = screen.getByLabelText("Angular");
 
