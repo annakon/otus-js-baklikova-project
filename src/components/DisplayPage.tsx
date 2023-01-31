@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
 import {RadioButton} from "./RadioButton";
 import {Loading} from "./loading";
+import {Menu} from "./Menu";
 
 export const DisplayPage: FC = () => {
 
-    //const name = useSelector(selectName);
-
     return <>
-        <h1 className="h1-center">Вакансии для начинающих разработчиков</h1>
+        <Menu></Menu>
         <div className="radio-center"><RadioButton></RadioButton></div>
         <Loading></Loading>
         </>
