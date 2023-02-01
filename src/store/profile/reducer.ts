@@ -6,13 +6,19 @@ interface State {
     isLoading: boolean;
     data: any | undefined;
     error: Error | undefined;
+    countR: number;
+    countA: number;
+    countV:number;
 }
 
 const initialState: State = {
     name: "react",
     isLoading: false,
     data: {},
-    error: undefined
+    error: undefined,
+    countR: 0,
+    countA: 0,
+    countV: 0,
 };
 
 export const profileReducer: Reducer<State> = (
@@ -39,6 +45,15 @@ export const profileReducer: Reducer<State> = (
                 data: undefined,
                 error: action.error,
             };
+        case "CHANGECOUNTR": {
+            return { ...state,isLoading: false, countR: action.countR};
+        }
+        case "CHANGECOUNTA": {
+            return { ...state,isLoading: false, countA: action.countA};
+        }
+        case "CHANGECOUNTV": {
+            return { ...state,isLoading: false, countV: action.countV};
+        }
         default:
             return state;
     }

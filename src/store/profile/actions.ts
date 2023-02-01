@@ -14,6 +14,21 @@ export const success = (payload: any) => ({
     payload,
 });
 
+export const cangecountR = (countR: number) => ({
+    type: "CHANGECOUNTR",
+    countR,
+});
+
+export const cangecountA = (countA: number) => ({
+    type: "CHANGECOUNTA",
+    countA,
+});
+
+export const cangecountV = (countV: number) => ({
+    type: "CHANGECOUNTV",
+    countV,
+});
+
 export const error = (error: Error) => ({
     type: "ERROR",
     error,
