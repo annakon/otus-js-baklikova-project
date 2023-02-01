@@ -50,7 +50,7 @@ export const Statistic: FC = () => {
     }, []);
 
     if (Loading) {
-        return <p>Loading....</p>;
+        return <><Menu></Menu><p>Loading....</p></>;
     }
     if (iserror) {
         return <h1>{iserror.message}</h1>;
