@@ -2,43 +2,23 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    "jest/globals": true,
+    node: true,
   },
-  extends: ["standard-with-typescript", "prettier"],
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"], // Your TypeScript files extension
-
-      // As mentioned in the comments, you should extend TypeScript plugins here,
-      // instead of extending them outside the `overrides`.
-      // If you don't want to extend any rules, you don't need an `extends` attribute.
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      ],
-
-      parserOptions: {
-        project: ["./tsconfig.json"], // Specify it only for TypeScript files
-      },
-    },
-    {
-      files: ["src/**"],
-      plugins: ["jest"],
-      rules: {
-        // you should turn the original rule off *only* for test files
-        "@typescript-eslint/unbound-method": "off",
-        "jest/unbound-method": "error",
-      },
-    },
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
   ],
-  plugins: ["jest", "@typescript-eslint"],
+  overrides: [],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
+  plugins: ["jest", "react", "@typescript-eslint"],
   rules: {
-    "import/no-unresolved": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/1624
-    "import/extensions": ["warn", "never"], // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-explicit-any": "off",
   },
-  parser: "@typescript-eslint/parser",
 };

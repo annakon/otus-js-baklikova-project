@@ -1,12 +1,19 @@
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { resolve } = require("node:path");
+import "webpack-dev-server";
+import { resolve } from "node:path";
+import * as webpack from 'webpack';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
-const mode = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV as
+| 'development'
+| 'production'
+| undefined;
 
-module.exports = {
-  entry: { main: "./src/index.ts" },
+const PREFIX='/otus-js-baklikova-project';
+
+const config: webpack.Configuration = {
+  entry: { main: "./src/index.tsx" },
   output: {
     path: resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -14,16 +21,17 @@ module.exports = {
     environment: {
       arrowFunction: false,
     },
+    publicPath: NODE_ENV=='development'?'/':PREFIX,
     // assetModuleFilename: 'images/[name][ext]'
   },
-  devtool: mode === "development" ? "eval-source-map" : "source-map",
+  devtool: NODE_ENV === "development" ? "eval-source-map" : "source-map",
   resolve: {
-    extensions: [".js", ".ts"],
+    extensions: [".js", ".ts", ".tsx"],
   },
   module: {
     rules: [
       {
-        test: /\.(ts|js)$/,
+        test: /\.(ts|js|tsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",
@@ -48,9 +56,17 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "public/index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "public/index.html",
+      filename: "404.html"
     }),
     new MiniCssExtractPlugin(),
+    new webpack.DefinePlugin({
+      PRODUCTION: NODE_ENV=='production',
+      PREFIX: JSON.stringify(PREFIX)
+    })
   ],
   optimization: {
     minimizer: [`...`, new CssMinimizerPlugin()],
@@ -59,8 +75,11 @@ module.exports = {
     compress: true,
     port: 9000,
     watchFiles: ["*.html"],
+    historyApiFallback: true,
   },
   experiments: {
     topLevelAwait: true,
   },
 };
+
+export default config;
